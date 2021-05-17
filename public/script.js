@@ -114,13 +114,58 @@ function changeTheme(btnValue) {
     let calc = document.getElementById("calcMain");
     let nav = document.getElementById("navbar");
     let mode = document.getElementById("dark-mode");
+    let currencyExchange = document.getElementById("swap");
+    let calcTax = document.getElementById("btn");
     
+    try{
     element.classList.toggle("dark-calc");
+    }
+    catch(TypeError){
+        console.log('Element not found')
+    }
+    try{
     nav.classList.toggle("bg-dark");
+    }
+    catch(TypeError){
+        console.log('Element not found')
+    }
+    try{
     mode.classList.toggle("darkBtn");
-    screen.classList.toggle("dark-screen");
-    calc.classList.toggle("calcContain");
-    calc.classList.toggle("hover");
+    }
+    catch(TypeError){
+        console.log('Element not found')
+    }
+    try{
+        screen.classList.toggle("dark-screen");
+    }
+    catch(TypeError){
+        console.log('Element not found')
+    }
+    try{
+        calc.classList.toggle("calcContain");
+    }
+    catch(TypeError){
+        console.log('Element not found')
+    }
+    try{
+        calc.classList.toggle("hover");
+    }
+    catch(TypeError){
+        console.log('Element not found')
+    }
+    try {
+    currencyExchange.classList.toggle("darkCol");
+    }
+    catch(TypeError){
+        console.log('Element not found')
+    }
+    try{
+    calcTax.classList.toggle("darkCol");
+    }
+    catch(TypeError){
+        console.log('Element not found')
+    }
+    
 };
 
 module.exports = {
