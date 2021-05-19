@@ -1,5 +1,6 @@
 document.body.addEventListener("click", handleClick);
 var inputScreen = document.querySelector('.screen');
+var taxScreen = document.getElementById("num");
 
 var operators = ['÷', 'x', '+', '-', '(', ')', '^', 'r'];
 var nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
@@ -29,9 +30,9 @@ function handleClick(event) {
         changeTheme(btnValue);
     }
     else if(event.target.id === 'taxcalculate'){
-        //province = dropScreen.innerHTML;
+        price = taxScreen.value;
         province = document.getElementById('currency-one').options[document.getElementById('currency-one').selectedIndex].text;
-        Taxes(province);
+        Taxes(province, price);
     };
 };
 
@@ -129,8 +130,7 @@ function changeTheme(btnValue) {
 
 /* Taxes JS */
 
-function Taxes(province){
-    var taxScreen = document.getElementById("num");
+function Taxes(province, price){
     var resultScreen = document.querySelector('.taxScreen');
     // Calculates the price with tax percentage
     if(province === 'Alberta' || province === 'Northwest Territories' || province === 'Nunavut' || province === 'Yukon'){
@@ -151,17 +151,23 @@ function Taxes(province){
     else if(province === 'New Brunswick' || province === 'Newfoundland and Labrador' || province === 'Nova Scotia' || province === 'Prince Edward Island'){
         sales = 0.15;
     }
-    if(taxScreen.value.toString().split(".")[1].length > 2){
-        resultScreen.innerHTML = "Error"
-    } else {
-        price = taxScreen.value;
-        total = price * sales + parseFloat(price)
-        resultScreen.innerHTML = total.toFixed(2)
+    try {
+        if (price.toString().split(".")[1].length > 2) {
+            resultScreen.innerHTML = "Error"
+        } else {
+            total = price * sales + parseFloat(price)
+            resultScreen.innerHTML = total.toFixed(2)
+        }
+    } catch (e) {
+        newprice = parseFloat(price).toFixed(2);
+        total = newprice * sales + parseFloat(newprice);
+        resultScreen.innerHTML = total.toFixed(2);
     };
 };
 
 module.exports = {
     opConvert,
     specAction,
-    handleClick
+    handleClick,
+    Taxes
 };

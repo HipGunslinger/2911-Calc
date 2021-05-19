@@ -26,6 +26,7 @@ document.body.innerHTML = `
       <button>.</button>
       <button>0</button>        
       <button class="twoSpots">=</button>
+      <div class="taxScreen taxScrn">
   </main>
   </div>
   <footer class="bottom">&copy;2021 Agile Development Team </footer>
@@ -91,4 +92,20 @@ test('test eval exponent', () => {
   calc.specAction('10^8', '=')
 
   expect(inputScreen.innerHTML).toBe('100000000');
+});
+
+/* Test Taxes*/
+
+test('test taxes', () => {
+  var resultScreen = document.querySelector('.taxScreen');
+  calc.Taxes('British Columbia', '60.0')
+
+  expect(resultScreen.innerHTML).toBe('67.20');
+});
+
+test('test error taxes', () => {
+  var resultScreen = document.querySelector('.taxScreen');
+  calc.Taxes('British Columbia', '60.1215')
+
+  expect(resultScreen.innerHTML).toBe('Error');
 });
