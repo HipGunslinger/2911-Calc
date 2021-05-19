@@ -165,5 +165,3 @@ module.exports = {
     specAction,
     handleClick
 };
-
-console.log('test')
