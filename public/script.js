@@ -27,9 +27,13 @@ function handleClick(event) {
     }
     else if(btnValue === 'Dark Theme' || btnValue === 'Light Theme'){
         changeTheme(btnValue);
+    }
+    else if(event.target.id === 'taxcalculate'){
+        //province = dropScreen.innerHTML;
+        province = document.getElementById('currency-one').options[document.getElementById('currency-one').selectedIndex].text;
+        Taxes(province);
     };
 };
-
 
 function specAction(input, btnValue){
     var inputScreen = document.querySelector('.screen');
@@ -115,11 +119,45 @@ function changeTheme(btnValue) {
     let mode = document.getElementById("dark-mode");
     
     element.classList.toggle("dark-calc");
+    nav.classList.toggle("bg-dark");
+    mode.classList.toggle("darkBtn");
     screen.classList.toggle("dark-screen");
     calc.classList.toggle("calcContain");
     calc.classList.toggle("hover");
-    nav.classList.toggle("bg-dark");
-    mode.classList.toggle("darkBtn");
+};
+
+
+/* Taxes JS */
+
+function Taxes(province){
+    var taxScreen = document.getElementById("num");
+    var resultScreen = document.querySelector('.taxScreen');
+    // Calculates the price with tax percentage
+    if(province === 'Alberta' || province === 'Northwest Territories' || province === 'Nunavut' || province === 'Yukon'){
+        sales = 0.05;
+    }
+    else if(province === 'Saskatchewan'){
+        sales = 0.11;
+    }
+    else if(province === 'British Columbia' || province === 'Manitoba'){
+        sales = 0.12;
+    }
+    else if(province === 'Ontario'){
+        sales = 0.13;
+    }
+    else if(province === 'Quebec'){
+        sales = 0.14975;
+    }
+    else if(province === 'New Brunswick' || province === 'Newfoundland and Labrador' || province === 'Nova Scotia' || province === 'Prince Edward Island'){
+        sales = 0.15;
+    }
+    if(taxScreen.value.toString().split(".")[1].length > 2){
+        resultScreen.innerHTML = "Error"
+    } else {
+        price = taxScreen.value;
+        total = price * sales + parseFloat(price)
+        resultScreen.innerHTML = total.toFixed(2)
+    };
 };
 
 module.exports = {

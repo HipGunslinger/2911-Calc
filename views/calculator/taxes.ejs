@@ -1,36 +1,37 @@
 <body>
-  <div class="historyCont">
-    <div class="history" id="history">
-      <h2>Previous Calculations</h2>
-      <ul id="theList">
-      </ul>
-    </div>
-  </div>
-    <div>
-    <main class="calcGrid" id="calcMain">
-      <div class="screen" id="screen">
-      </div>        
-        <button class="twoSpots" id="acBtn">AC</button>        
-        <button>DEL</button>        
-        <button>÷</button>        
-        <button>7</button>
-        <button>8</button>
-        <button>9</button>        
-        <button>x</button>        
-        <button>4</button>
-        <button>5</button>
-        <button>6</button>        
-        <button>+</button>
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>-</button>
-        <button>.</button>
-        <button>0</button>        
-        <button class="twoSpots mark">=</button>
-    </main>
-    </div>
-    <footer class="bottom">&copy;2021 Agile Development Team </footer>
-  </body>
-  </html>
-  
+  <div>
+  <main class="taxGrid" id="taxMain">
+    <div class="taxContainer">
+      <div class="currency">
+        <select name="currency" id="currency-one">
+          <i class="fas fa-arrow-down"></i>
+          <option value="AB">Alberta</option>
+          <option value="BC" selected>British Columbia</option>
+          <option value="MB">Manitoba</option>
+          <option value="NB">New Brunswick</option>
+          <option value="NL">Newfoundland and Labrador</option>
+          <option value="NS">Nova Scotia</option>
+          <option value="NT">Northwest Territories</option>
+          <option value="NU">Nunavut</option>
+          <option value="ON">Ontario</option>
+          <option value="PE">Prince Edward Island</option>
+          <option value="QC">Quebec</option>
+          <option value="SK">Saskatchewan</option>
+          <option value="YT">Yukon</option>
+        </select>
+        <input class="taxArea" id="num" type="number" min="0.1" step="0.01" placeholder="Enter Price Here">
+        <span class="validity"></span>
+      </div>
+      <div class="swap-rate-container">
+        <button id="taxcalculate" class="btn taxColor">
+          Calculate
+        </button>
+        <div class="rate" id="rate"></div>
+      </div>
+      <div class="taxScreen taxScrn">
+      </div>
+  </main>
+</div>
+  <footer class="bottom">&copy;2021 Agile Development Team </footer>
+</body>
+
