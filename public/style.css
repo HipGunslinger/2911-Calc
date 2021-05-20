@@ -221,8 +221,13 @@ input:valid + span:after {
   margin-left: -2.5em;
   margin-top: 2em;
   margin-bottom: 2em;
+  color: white;
 }
 
 .darkCol {
   color: var(--darkcolor);
+}
+
+#rate {
+  color: white;
 }
