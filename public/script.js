@@ -1,6 +1,8 @@
 document.body.addEventListener("click", handleClick);
 var inputScreen = document.querySelector('.screen');
 
+
+/* Variables used by calculator */
 var operators = ['÷', 'x', '+', '-', '(', ')', '^', 'r'];
 var nums = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 var actions = ['DEL', 'AC', '='];
@@ -8,6 +10,7 @@ var extras = ['.'];
 let calchistory = [];
 
 
+/* listens to the clicked event */
 function handleClick(event) {
     // Handles the clicks by the user
     btnValue = event.target.innerHTML;
@@ -27,11 +30,14 @@ function handleClick(event) {
     }
     else if(btnValue === 'Dark Theme' || btnValue === 'Light Theme'){
         changeTheme(btnValue);
+    }
+    else if(btnValue === 'Swap'){
+        swapBtns();
     };
-
 };
 
 
+/* Handles functions of calculator */
 function specAction(input, btnValue){
     var inputScreen = document.querySelector('.screen');
     // Takes input actions and edits calculator screen based on them
@@ -63,6 +69,7 @@ function specAction(input, btnValue){
 };
 
 
+/* Converts the calculator inputs into readable format */
 function opConvert(input){
     // Converts the inputs operators where neccessary
     input = input.replace('x', '*').replace('÷', '/').replace('r', '%').replace('^', '**');
@@ -71,7 +78,6 @@ function opConvert(input){
 
 
 /*History Log*/
-
 function History(calchistory, btnValue){
     let list = document.getElementById("theList");
     if(btnValue === '='){
@@ -86,6 +92,43 @@ function History(calchistory, btnValue){
         })
     };
 };
+
+
+/* Exchange Rate JS */
+const typeOne = document.getElementById('currency-one')
+const typeTwo = document.getElementById('currency-two')
+const amountOne = document.getElementById('amount-one')
+const amountTwo = document.getElementById('amount-two')
+const xrate = document.getElementById('rate')
+
+// Gets the exchange rate
+async function calculate() {
+    const valueOne = typeOne.value;
+    const valueTwo = typeTwo.value;
+    
+    const response = await fetch(`https://api.exchangerate-api.com/v4/latest/${valueOne}`);
+    const data = await response.json();
+    const rate = data.rates[valueTwo];
+
+    xrate.innerText = `1 ${valueOne} is equal to ${rate} ${valueTwo}`;
+    amountTwo.value = (amountOne.value * rate).toFixed(2);
+};
+
+
+function swapBtns() {
+    const temp = typeOne.value;
+    typeOne.value = typeTwo.value;
+    typeTwo.value = temp;
+    calculate();
+}
+
+/* Event listeners for exchange */
+typeOne.addEventListener('change', calculate);
+amountOne.addEventListener('input', calculate);
+typeTwo.addEventListener('change', calculate);
+amountTwo.addEventListener('input', calculate);
+
+calculate();
 
 
 /* Dark Mode JS */
