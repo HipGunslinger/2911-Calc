@@ -12,6 +12,10 @@ let CalcController = {
   advanced: (req, res) => {
     res.render("calculator/advanced");
   },
+
+  currency: (req, res) => {
+    res.render("calculator/currency");
+  },
 };
 
 
