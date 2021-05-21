@@ -1,4 +1,6 @@
 document.body.addEventListener("click", handleClick);
+document.body.addEventListener("change", handleChange);
+document.body.addEventListener("input", handleInput);
 var inputScreen = document.querySelector('.screen');
 var taxScreen = document.getElementById("num");
 
@@ -39,7 +41,30 @@ function handleClick(event) {
     }
     else if(btnValue === 'Swap'){
         swapBtns();
+    }
+    else if(btnValue === 'Swap'){
+        swapBtns()
     };
+};
+
+function handleChange(event) {
+    // Handles the changes by the user
+    if(event.target.id === 'currency-one'){
+        calculate()
+    }
+    else if(event.target.id === 'currency-two'){
+        calculate()
+    };
+};
+
+function handleInput(event) {
+    // Handles the inputs by the user
+    if(event.target.id === 'amount-one'){
+        calculate()
+    }
+    else if(event.target.id === 'amount-two'){
+        calculate()
+    }
 };
 
 
@@ -128,14 +153,7 @@ function swapBtns() {
     calculate();
 }
 
-/* Event listeners for exchange */
-typeOne.addEventListener('change', calculate);
-amountOne.addEventListener('input', calculate);
-typeTwo.addEventListener('change', calculate);
-amountTwo.addEventListener('input', calculate);
-
 calculate();
-
 
 /* Dark Mode JS */
 
