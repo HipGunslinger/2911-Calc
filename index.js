@@ -22,6 +22,8 @@ app.get("/calculator/advanced", CalcController.advanced);
 
 app.get("/calculator/currency", CalcController.currency);
 
+app.get("/calculator/about", CalcController.about);
+
 app.listen(3001, function () {
   console.log(
     "Server running. Visit: localhost:3001/calculator in your browser 🚀"

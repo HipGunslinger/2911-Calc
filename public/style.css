@@ -231,3 +231,20 @@ input:valid + span:after {
 #rate {
   color: white;
 }
+
+/* About CSS */
+
+.about-container {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  min-height: 100vh;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  transition: 0.8s all;
+  text-align: center;
+}
+
+li {
+  list-style-type: none;
+}

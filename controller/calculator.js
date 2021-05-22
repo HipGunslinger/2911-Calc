@@ -16,6 +16,10 @@ let CalcController = {
   currency: (req, res) => {
     res.render("calculator/currency");
   },
+
+  about: (req, res) => {
+    res.render("calculator/about");
+  },
 };
 
 
