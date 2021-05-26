@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const ejsLayouts = require("express-ejs-layouts");
-const CalcController = require("/controller/calculator");
+const CalcController = require("./controller/calculator");
 var PORT = process.env.PORT || 3001;
 
 
