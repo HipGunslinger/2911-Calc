@@ -32,43 +32,38 @@ document.body.innerHTML = `
   <footer class="bottom">&copy;2021 Agile Development Team </footer>
   `;
 
+const inputScreen = document.querySelector('.screen');
+const resultScreen = document.querySelector('.taxScreen');
+
+/* Test Basic Calculator*/
 test('replacement of operations', () => {
   expect(calc.opConvert('5+8x9÷5')).toBe('5+8*9/5');
 });
 
 test('test eval', () => {
-  const inputScreen = document.querySelector('.screen');
   calc.specAction('5+8', '=')
-
   expect(inputScreen.innerHTML).toBe('13');
 });
 
 test('test error', () => {
-  const inputScreen = document.querySelector('.screen');
   calc.specAction('5++8', '=')
-
   expect(inputScreen.innerHTML).toBe('Syntax Error');
 });
 
 test('test DEL', () => {
-  const inputScreen = document.querySelector('.screen');
-
   calc.specAction('589', 'DEL');
   expect(console.log).toHaveBeenCalledWith('58');
 
 });
 
 test('test AC', () => {
-  const inputScreen = document.querySelector('.screen');
   calc.specAction('5+8', 'AC')
-
   expect(inputScreen.innerHTML).toBe('');
 });
 
+/* Test Advanced Calculator*/
 test('test eval brackets', () => {
-  const inputScreen = document.querySelector('.screen');
   calc.specAction('(2+6)x2', '=')
-
   expect(inputScreen.innerHTML).toBe('16');
 });
 
@@ -77,9 +72,7 @@ test('replacement of r', () => {
 });
 
 test('test eval remainder', () => {
-  const inputScreen = document.querySelector('.screen');
   calc.specAction('10r8', '=')
-
   expect(inputScreen.innerHTML).toBe('2');
 });
 
@@ -88,24 +81,17 @@ test('replacement of ^', () => {
 });
 
 test('test eval exponent', () => {
-  const inputScreen = document.querySelector('.screen');
   calc.specAction('10^8', '=')
-
   expect(inputScreen.innerHTML).toBe('100000000');
 });
 
 /* Test Taxes*/
-
 test('test taxes', () => {
-  var resultScreen = document.querySelector('.taxScreen');
   calc.Taxes('British Columbia', '60.0')
-
   expect(resultScreen.innerHTML).toBe('67.20');
 });
 
 test('test error taxes', () => {
-  var resultScreen = document.querySelector('.taxScreen');
   calc.Taxes('British Columbia', '60.1215')
-
   expect(resultScreen.innerHTML).toBe('Error');
 });

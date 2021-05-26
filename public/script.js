@@ -24,6 +24,7 @@ function handleClick(event) {
         History(calchistory, btnValue);
     }
     else if(event.target.tagName === "LI"){
+        // Adds calculation to log history
         result = btnValue.substring(btnValue.indexOf('=') + 1);
         inputScreen.innerHTML = result;
     }
@@ -32,19 +33,19 @@ function handleClick(event) {
         inputScreen.innerHTML += btnValue;
     }
     else if(btnValue === 'Dark Theme' || btnValue === 'Light Theme'){
+        // Change Theme
         changeTheme(btnValue);
     }
     else if(event.target.id === 'taxcalculate'){
+        // calls Tax function to calculate taxes
         price = taxScreen.value;
         province = document.getElementById('currency-one').options[document.getElementById('currency-one').selectedIndex].text;
         Taxes(province, price);
     }
     else if(btnValue === 'Swap'){
+        // calls swapBtns to change currency
         swapBtns();
     }
-    else if(btnValue === 'Swap'){
-        swapBtns()
-    };
 };
 
 function handleChange(event) {
@@ -70,7 +71,6 @@ function handleInput(event) {
 
 /* Handles functions of calculator */
 function specAction(input, btnValue){
-    var inputScreen = document.querySelector('.screen');
     // Takes input actions and edits calculator screen based on them
     if(btnValue === '='){
         // if button was '=' takes string and evaluates it
@@ -133,7 +133,7 @@ const amountOne = document.getElementById('amount-one')
 const amountTwo = document.getElementById('amount-two')
 const xrate = document.getElementById('rate')
 
-// Gets the exchange rate
+/* Currency exchange */
 async function calculate() {
     const valueOne = typeOne.value;
     const valueTwo = typeTwo.value;
@@ -187,54 +187,45 @@ function changeTheme(btnValue) {
     let calcTax = document.getElementById("btn");
     
     try{
-    element.classList.toggle("dark-calc");
-    }
-    catch(TypeError){
+        element.classList.toggle("dark-calc");
+    } catch(TypeError){
         console.log('Element not found')
     }
     try{
-    nav.classList.toggle("bg-dark");
-    }
-    catch(TypeError){
+        nav.classList.toggle("bg-dark");
+    } catch(TypeError){
         console.log('Element not found')
     }
     try{
-    mode.classList.toggle("darkBtn");
-    }
-    catch(TypeError){
+        mode.classList.toggle("darkBtn");
+    } catch(TypeError){
         console.log('Element not found')
     }
     try{
         screen.classList.toggle("dark-screen");
-    }
-    catch(TypeError){
+    } catch(TypeError){
         console.log('Element not found')
     }
     try{
         calc.classList.toggle("calcContain");
-    }
-    catch(TypeError){
+    } catch(TypeError){
         console.log('Element not found')
     }
     try{
         calc.classList.toggle("hover");
-    }
-    catch(TypeError){
+    } catch(TypeError){
         console.log('Element not found')
     }
     try {
-    currencyExchange.classList.toggle("darkCol");
-    }
-    catch(TypeError){
+        currencyExchange.classList.toggle("darkCol");
+    } catch(TypeError){
         console.log('Element not found')
     }
     try{
-    calcTax.classList.toggle("darkCol");
-    }
-    catch(TypeError){
+        calcTax.classList.toggle("darkCol");
+    } catch(TypeError){
         console.log('Element not found')
     }
-    
 };
 
 
