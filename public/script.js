@@ -126,6 +126,7 @@ function History(calchistory, btnValue){
 
 
 /* Exchange Rate JS */
+
 const typeOne = document.getElementById('currency-one')
 const typeTwo = document.getElementById('currency-two')
 const amountOne = document.getElementById('amount-one')
@@ -154,6 +155,7 @@ function swapBtns() {
 }
 
 calculate();
+
 
 /* Dark Mode JS */
 
