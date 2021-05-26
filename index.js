@@ -15,9 +15,9 @@ app.use(ejsLayouts);
 app.set("view engine", "ejs");
 
 // Routes
-app.get("/calculator/", CalcController.basic);
+app.get("/", CalcController.basic);
 
-app.get("/calculator/taxes/", CalcController.tax);
+app.get("/taxes/", CalcController.tax);
 
 app.get("/calculator/advanced/", CalcController.advanced);
 
