@@ -262,16 +262,20 @@ function Taxes(province, price){
         sales = 0.15;
     }
     try {
-        if (price.toString().split(".")[1].length > 2) {
+        if (price.toString().split(".")[1].length > 2 || price.charAt(0) === '-') {
             resultScreen.innerHTML = "Error"
         } else {
             total = price * sales + parseFloat(price)
             resultScreen.innerHTML = total.toFixed(2)
         }
     } catch (e) {
-        newprice = parseFloat(price).toFixed(2);
-        total = newprice * sales + parseFloat(newprice);
-        resultScreen.innerHTML = total.toFixed(2);
+        if (price.charAt(0) === '-') {
+            resultScreen.innerHTML = "Error"
+        } else {
+            newprice = parseFloat(price).toFixed(2);
+            total = newprice * sales + parseFloat(newprice);
+            resultScreen.innerHTML = total.toFixed(2);
+        }
     };
 };
 
