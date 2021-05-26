@@ -3,6 +3,7 @@ const app = express();
 const path = require("path");
 const ejsLayouts = require("express-ejs-layouts");
 const CalcController = require("./controller/calculator");
+var PORT = process.env.PORT || 3001;
 
 
 app.use(express.static(path.join(__dirname, "public")));
@@ -24,7 +25,7 @@ app.get("/calculator/currency", CalcController.currency);
 
 app.get("/calculator/about", CalcController.about);
 
-app.listen(3001, function () {
+app.listen(PORT, function () {
   console.log(
     "Server running. Visit: localhost:3001/calculator in your browser 🚀"
   );
