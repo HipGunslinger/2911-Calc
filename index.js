@@ -27,6 +27,6 @@ app.get("/calculator/about/", CalcController.about);
 
 app.listen(PORT, function () {
   console.log(
-    "Server running. Visit: localhost:3001/calculator in your browser 🚀"
+    "Server running. Visit: localhost:3001 in your browser 🚀"
   );
 });
