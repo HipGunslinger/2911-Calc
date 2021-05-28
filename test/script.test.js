@@ -1,7 +1,4 @@
-const calc = require('../public/script')
-global.console = {
-  log: jest.fn()
-}
+
 
 document.body.innerHTML = `
     <div>
@@ -95,3 +92,8 @@ test('test error taxes', () => {
   calc.Taxes('British Columbia', '60.1215')
   expect(resultScreen.innerHTML).toBe('Error');
 });
+
+const calc = require('../public/script')
+global.console = {
+  log: jest.fn()
+}
